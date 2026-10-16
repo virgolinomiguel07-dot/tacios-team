@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TACIOS TEAM | Site Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0508;
+            --panel-bg: #150a12;
+            --red: #ff1e41;
+            --purple: #360c41;
+            --gold: #ffc341;
+            --white: #fff5fa;
+            --gray: #9e8c96;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 20%, rgba(54, 12, 65, 0.4) 0%, transparent 60%);
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            border-bottom: 2px solid rgba(255, 30, 65, 0.3);
+            background: rgba(10, 5, 8, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .badge {
+            background: rgba(255, 30, 65, 0.15);
+            color: var(--red);
+            border: 1px solid var(--red);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 12px;
+            animation: pulseGlow 2s infinite;
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(255,30,65,0.4); }
+            50% { box-shadow: 0 0 20px rgba(255,30,65,0.8); }
+            100% { box-shadow: 0 0 5px rgba(255,30,65,0.4); }
+        }
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            color: var(--white);
+            text-shadow: 0 0 15px rgba(255, 30, 65, 0.6);
+            margin-bottom: 8px;
+        }
+        h1 span { color: var(--red); }
+        p.subtitle {
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .dev-banner {
+            background: linear-gradient(135deg, rgba(54, 12, 65, 0.6), rgba(255, 30, 65, 0.2));
+            border: 1px solid var(--red);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .dev-banner h3 {
+            color: var(--gold);
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+        .dev-banner p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(255, 30, 65, 0.3);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--red);
+            box-shadow: 0 8px 25px rgba(255, 30, 65, 0.25);
+        }
+        .card h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+        .card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(255, 195, 65, 0.15);
+            color: var(--gold);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        button, .btn {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+        button:hover, .btn:hover {
+            background: #e01233;
+        }
+        button.secondary, .btn.secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        button.secondary:hover, .btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 30, 65, 0.2);
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        /* Toast notification */
+        #toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--red);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1000;
+            animation: fadeInOut 0.3s forwards;
+        }
+        @keyframes fadeInOut {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="badge">🚨 SITE OFICIAL EM DESENVOLVIMENTO 🚨</div>
+        <h1>TACIOS <span>TEAM</span></h1>
+        <p class="subtitle">🤡👑 OS PROJETOS ESTÃO SÓ COMEÇANDO! 🤡❤️</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="dev-banner">
+            <h3>🚧 AINDA ESTAMOS PREPARANDO TUDO!</h3>
+            <p>Em breve o site completo estará no ar com todos os downloads organizados, atualizações e GUIs oficiais da Tacios Team. Fiquem ligados!</p>
+        </div>
+
+        <div class="section-title">📦 SCRIPTS & GUIS DISPONÍVEIS</div>
+        
+        <div class="grid">
+            <!-- FE Xester V5 -->
+            <div class="card">
+                <div>
+                    <span class="tag">🔴 KILLER CLOWN EDITION</span>
+                    <h3>FE Xester V5</h3>
+                    <p>Atualizações e novas versões locais do Xester com super velocidade, aura de terror, confetes, painel de IDs e muito mais.</p>
+                </div>
+                <div class="btn-group">
+                    <button onclick="copyScript('fexester')">Copiar Script</button>
+                </div>
+            </div>
+
+            <!-- Nova Hub Halloween -->
+            <div class="card">
+                <div>
+                    <span class="tag">🎃 EDIÇÃO ESPECIAL</span>
+                    <h3>Nova Hub Halloween</h3>
+                    <p>Hub temática noturna com efeitos de iluminação, lanterna, gravidade baixa, pulo alto e configurador de skybox de 6 IDs.</p>
+                </div>
+                <div class="btn-group">
+                    <button onclick="copyScript('novahub_halloween')">Copiar Script</button>
+                </div>
+            </div>
+
+            <!-- Nova Hub Mobile Principal -->
+            <div class="card">
+                <div>
+                    <span class="tag">💜 PRINCIPAL</span>
+                    <h3>Nova Hub Mobile</h3>
+                    <p>Hub completa com sistema de voo local, noclip, teleporte para spawn, modificadores de velocidade e painel tátil otimizado para celular.</p>
+                </div>
+                <div class="btn-group">
+                    <button onclick="copyScript('novahub_mobile')">Copiar Script</button>
+                </div>
+            </div>
+
+            <!-- 007n7 Hub -->
+            <div class="card">
+                <div>
+                    <span class="tag">⚙️ CLASSIC EDITION</span>
+                    <h3>007n7 Hub</h3>
+                    <p>Interface retro inspirada em clássicos do Roblox com alertas visuais, glitch de borda, modo compacto e status de personagem.</p>
+                </div>
+                <div class="btn-group">
+                    <button onclick="copyScript('hub007n7')">Copiar Script</button>
+                </div>
+            </div>
+
+            <!-- Bluudud Hub -->
+            <div class="card">
+                <div>
+                    <span class="tag">💙 MEME EDITION</span>
+                    <h3>Bluudud Hub</h3>
+                    <p>Painel de memes certificado com gerador de carrinho Bluudud local, skybox azul e efeitos sonoros divertidos.</p>
+                </div>
+                <div class="btn-group">
+                    <button onclick="copyScript('bluudud')">Copiar Script</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© TACIOS TEAM — Todos os direitos reservados. Projetos em constante evolução!</p>
+    </footer>
+
+    <div id="toast">Script copiado para a área de transferência! 🚀</div>
+
+    <script>
+        const scriptsData = {
+            fexester: `-- TACIOS TEAM | FE XESTER V5\nloadstring(game:HttpGet("https://scriptblox.com/raw/Just-a-baseplate.-fe-xester-with-fling-53672"))()`,
+            novahub_halloween: `-- NOVA HUB MOBILE | HALLOWEEN 🎃\nlocal Players = game:GetService("Players")\nprint("Nova Hub Halloween Carregado!")`,
+            novahub_mobile: `-- NOVA HUB MOBILE v1.0\nlocal Players = game:GetService("Players")\nprint("Nova Hub Mobile Carregado!")`,
+            hub007n7: `-- 007 DOS N DO MEU 7 | 007n7 HUB\nlocal Players = game:GetService("Players")\nprint("007n7 Hub Carregado!")`,
+            bluudud: `-- BLUUDUD HUB v1.0\nlocal Players = game:GetService("Players")\nprint("Bluudud Hub Carregado!")`
+        };
+
+        function copyScript(key) {
+            const code = scriptsData[key];
+            navigator.clipboard.writeText(code).then(() => {
+                showToast();
+            }).catch(err => {
+                alert('Erro ao copiar script.');
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
